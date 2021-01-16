@@ -5,7 +5,7 @@
 ;;;
 ;;; Author & Maintainer: Scott E. Fahlman
 ;;; ***************************************************************************
-;;; Copyright (C) 2003-2018, Carnegie Mellon University.
+;;; Copyright (C) 2003-2014, Carnegie Mellon University.
 ;;;
 ;;; The Scone software is made available to the public under the
 ;;; Apache 2.0 open source license.  A copy of this license is
@@ -45,19 +45,21 @@
 ;;; U.S. Government, or any of our other sponsors
 ;;; ***************************************************************************
 
-;;; This file defines the SCONE function that starts up the current version
-;;; of SCONE, and sets things up so that we will by default get the
+;;; This file defines the SCONE function that starts up some user-specified
+;;; version of SCONE, and sets things up so that we will by default get the
 ;;; matching KB files.
 
 ;;; NOTE: Contains some installation-specific pathnames.  If you move this
 ;;; directory, be sure to update the pathnames.
 
+(defvar *version*)
 (defvar *default-kb-pathname*)
 
 (declaim (ftype (function (string &key (:verbose boolean)))
 		load-kb))
 
-(defun scone ()
+(defun scone (&optional (version "scone-git"))
+  (setq *version* version)
   (setq *default-kb-pathname* 
 	"/Users/anoushkatiwari/documents/GitHub/scone/kb/anonymous.lisp")
   (load "/Users/anoushkatiwari/documents/GitHub/scone/engine.lisp")
@@ -69,5 +71,5 @@
   (funcall (intern "LOAD-KB") "bootstrap")
   (values))
 
-(format t "~2%;;; Call (scone) to start Scone.~%")
+(format t "~2%;;; Call (scone \"some-version-name\") to start Scone.~%")
 
