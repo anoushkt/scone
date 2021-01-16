@@ -59,8 +59,8 @@
 
 (defun scone ()
   (setq *default-kb-pathname* 
-	"/Users/sef/Dropbox/Scone/scone-git/kb/anonymous.lisp")
-  (load "/Users/sef/Dropbox/Scone/scone-git/engine")
+	"/Users/anoushkatiwari/documents/GitHub/scone/kb/anonymous.lisp")
+  (load "/Users/anoushkatiwari/documents/GitHub/scone/engine.lisp")
   ;; If we're using a Scone engine that creates a separate scone package,
   ;; get into that package.
   (when (find-package :scone)
